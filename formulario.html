@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario - 24 Horas de Le Mans</title>
+</head>
+
+<body>
+
+    <h1>Formulario de las 24 Horas de Le Mans</h1>
+
+    <form action="#" method="post">
+
+        <fieldset>
+            <legend>Datos personales</legend>
+
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <br><br>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required>
+            <br><br>
+
+            <label for="email">Correo electrónico:</label>
+            <input type="email" id="email" name="email" required>
+            <br><br>
+
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad" min="1" max="120">
+            <br><br>
+
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Información sobre Le Mans</legend>
+
+            <label for="equipo">¿Cuál es tu equipo favorito?</label>
+            <select id="equipo" name="equipo">
+                <option value="">Selecciona un equipo</option>
+                <option value="ferrari">Ferrari</option>
+                <option value="toyota">Toyota</option>
+                <option value="porsche">Porsche</option>
+                <option value="cadillac">Cadillac</option>
+                <option value="bmw">BMW</option>
+                <option value="alpine">Alpine</option>
+                <option value="peugeot">Peugeot</option>
+            </select>
+
+            <br><br>
+
+            <label for="piloto">Piloto favorito:</label>
+            <input type="text" id="piloto" name="piloto">
+
+            <br><br>
+
+            <p>¿Has visto alguna vez las 24 Horas de Le Mans?</p>
+
+            <input type="radio" id="si" name="visto" value="si">
+            <label for="si">Sí</label>
+
+            <input type="radio" id="no" name="visto" value="no">
+            <label for="no">No</label>
+
+            <br><br>
+
+            <p>¿Qué es lo que más te gusta de Le Mans?</p>
+
+            <input type="checkbox" id="velocidad" name="gustos" value="velocidad">
+            <label for="velocidad">La velocidad</label>
+            <br>
+
+            <input type="checkbox" id="coches" name="gustos" value="coches">
+            <label for="coches">Los coches</label>
+            <br>
+
+            <input type="checkbox" id="equipos" name="gustos" value="equipos">
+            <label for="equipos">Los equipos</label>
+            <br>
+
+            <input type="checkbox" id="estrategia" name="gustos" value="estrategia">
+            <label for="estrategia">La estrategia</label>
+
+            <br><br>
+
+            <label for="clase">Categoría favorita:</label>
+            <select id="clase" name="clase">
+                <option value="hypercar">Hypercar</option>
+                <option value="lmp2">LMP2</option>
+                <option value="lmgt3">LMGT3</option>
+            </select>
+
+            <br><br>
+
+            <label for="fecha">¿Cuándo te gustaría asistir?</label>
+            <input type="date" id="fecha" name="fecha">
+
+            <br><br>
+
+            <label for="comentario">¿Qué opinas de las 24 Horas de Le Mans?</label>
+            <br>
+            <textarea id="comentario" name="comentario" rows="6" cols="50"></textarea>
+
+        </fieldset>
+
+        <br>
+
+        <fieldset>
+            <legend>Preferencias</legend>
+
+            <label for="pais">País:</label>
+            <input type="text" id="pais" name="pais">
+
+            <br><br>
+
+            <label for="numero">¿Cuántas veces has visto la carrera?</label>
+            <input type="number" id="numero" name="numero" min="0">
+
+            <br><br>
+
+            <label for="satisfaccion">¿Qué tanto te gusta Le Mans?</label>
+            <input type="range" id="satisfaccion" name="satisfaccion" min="1" max="10">
+
+        </fieldset>
+
+        <br>
+
+        <input type="submit" value="Enviar formulario">
+        <input type="reset" value="Borrar datos">
+
+    </form>
+
+</body>
+
+</html>

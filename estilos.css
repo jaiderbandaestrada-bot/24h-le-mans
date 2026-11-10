@@ -1,0 +1,299 @@
+/* ===== Le Mans · estilos.css ===== */
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap");
+
+:root {
+  --asfalto: #15181d;
+  --papel: #f4f5f7;
+  --superficie: #ffffff;
+  --texto: #1d2128;
+  --texto-suave: #5a6270;
+  --borde: #d5d9e0;
+  --azul: #0b4fa8;
+  --amarillo: #f5c518;
+  --fila-alt: #eef0f4;
+  --enlace: #0b4fa8;
+}
+:root[data-tema="oscuro"] {
+  --papel: #101319;
+  --superficie: #181c24;
+  --texto: #e9ecf1;
+  --texto-suave: #9aa3b2;
+  --borde: #2e3541;
+  --fila-alt: #1d222b;
+  --enlace: #7db4ff;
+}
+
+
+/* Base (venía del <style> original) */
+* { box-sizing: border-box; }
+body { margin: 0; }
+main, footer { width: min(100% - 2rem, 1100px); margin-inline: auto; }
+header { text-align: center; }
+figure { margin: 1rem auto; text-align: center; }
+img { max-width: 100%; height: auto; }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+caption { padding: .75rem 0; }
+th, td { border: 1px solid var(--borde); padding: .5rem; text-align: left; }
+footer { padding: 1rem 0; text-align: center; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+
+body {
+  font-family: "Barlow", Arial, Helvetica, sans-serif;
+  background: var(--papel);
+  color: var(--texto);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  transition: background .25s, color .25s;
+}
+
+/* Barra de progreso de lectura */
+#progreso {
+  position: fixed; top: 0; left: 0; height: 4px; width: 0;
+  background: var(--amarillo); z-index: 200;
+}
+
+/* Cabecera */
+header {
+  width: 100%;
+  max-width: none;
+  background: var(--asfalto);
+  color: #fff;
+  padding: 3rem 1rem 2.5rem;
+  border-bottom: 6px solid var(--amarillo);
+}
+header h1 {
+  margin: 0 0 1.5rem;
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-weight: 800;
+  font-size: clamp(2.4rem, 8vw, 5rem);
+  letter-spacing: .04em;
+  line-height: 1;
+}
+header img {
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.5);
+}
+
+/* Navegación (creada por JS) */
+#nav-principal {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; align-items: center; gap: .25rem;
+  overflow-x: auto;
+  background: var(--asfalto);
+  padding: .4rem 1rem;
+  scrollbar-width: none;
+}
+#nav-principal::-webkit-scrollbar { display: none; }
+#nav-principal a {
+  color: #cfd5df; text-decoration: none; white-space: nowrap;
+  padding: .35rem .8rem; border-radius: 4px;
+  font-weight: 600; font-size: .95rem;
+}
+#nav-principal a:hover { color: #fff; background: #262b34; }
+#nav-principal a.activo { color: var(--asfalto); background: var(--amarillo); }
+#btn-tema {
+  margin-left: auto; flex-shrink: 0;
+  border: 1px solid #3a414d; background: transparent; color: #fff;
+  padding: .3rem .8rem; border-radius: 4px; cursor: pointer; font: inherit; font-size: .9rem;
+}
+#btn-tema:hover { background: #262b34; }
+
+/* Contenido */
+main { padding-bottom: 2rem; }
+
+section {
+  background: var(--superficie);
+  border: 1px solid var(--borde);
+  border-left: 6px solid var(--azul);
+  border-radius: 6px;
+  padding: 1.5rem 1.75rem;
+  margin: 1.75rem 0;
+}
+section h2 {
+  margin: 0 0 1rem;
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.9rem;
+  letter-spacing: .03em;
+}
+section p { max-width: 75ch; }
+
+figure img { border-radius: 6px; }
+figcaption { color: var(--texto-suave); font-size: .9rem; margin-top: .4rem; }
+figure a img { transition: transform .2s; }
+figure a:hover img, figure a:focus-visible img { transform: scale(1.02); }
+
+a { color: var(--enlace); }
+a:focus-visible, button:focus-visible, input:focus-visible {
+  outline: 3px solid var(--amarillo); outline-offset: 2px;
+}
+
+/* Listas de marcas */
+section[aria-labelledby="categorias"] ul { display: flex; gap: .75rem; list-style: none; padding: 0; flex-wrap: wrap; }
+section[aria-labelledby="categorias"] li {
+  background: var(--asfalto); color: #fff; padding: .5rem 1.25rem;
+  border-radius: 4px; font-family: "Barlow Condensed", sans-serif;
+  font-weight: 700; font-size: 1.2rem; letter-spacing: .05em;
+}
+section[aria-labelledby="hypercars"] ol, section[aria-labelledby="lmgt3"] ol {
+  columns: 2 14rem; column-gap: 2rem; padding-left: 1.6rem;
+}
+section[aria-labelledby="hypercars"] li, section[aria-labelledby="lmgt3"] li { padding: .15rem 0; break-inside: avoid; }
+section[aria-labelledby="hypercars"] li::marker, section[aria-labelledby="lmgt3"] li::marker { color: var(--azul); font-weight: 700; }
+
+/* Tabla */
+#filtro {
+  width: 100%; max-width: 24rem; padding: .55rem .8rem; margin-bottom: .5rem;
+  border: 1px solid var(--borde); border-radius: 4px;
+  background: var(--papel); color: var(--texto); font: inherit;
+}
+.tabla-scroll { overflow-x: auto; }
+table { font-size: .95rem; }
+caption { text-align: left; color: var(--texto-suave); font-weight: 600; }
+th { background: var(--asfalto); color: #fff; border-color: var(--asfalto); position: sticky; top: 0; }
+td, th { border-color: var(--borde); }
+tbody tr:nth-child(even) { background: var(--fila-alt); }
+tbody tr { cursor: pointer; transition: background .15s; }
+tbody tr:hover { background: rgba(245,197,24,.25); }
+tbody tr.seleccionada { background: var(--amarillo) !important; color: #15181d; font-weight: 600; }
+#sin-resultados { display: none; color: var(--texto-suave); }
+
+/* Inscripción */
+section[aria-labelledby="inscripcion"] p { font-size: 1.3rem; font-weight: 600; margin: 0; }
+
+footer { color: var(--texto-suave); }
+
+/* Botón volver arriba */
+#btn-arriba {
+  position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 150;
+  width: 3rem; height: 3rem; border: 0; border-radius: 50%;
+  background: var(--amarillo); color: #15181d; font-size: 1.3rem; font-weight: 700;
+  cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.35);
+  opacity: 0; pointer-events: none; transition: opacity .2s;
+}
+#btn-arriba.visible { opacity: 1; pointer-events: auto; }
+
+@media (max-width: 600px) {
+  section { padding: 1.1rem 1rem; }
+  body { font-size: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+/* ===== Botón de inscripción ===== */
+.btn-inscripcion {
+  position: relative; display: inline-block; overflow: hidden;
+  margin: 0 .4rem; padding: .75rem 2rem;
+  background: var(--amarillo); color: #15181d !important;
+  font-family: "Barlow Condensed", Arial, sans-serif;
+  font-weight: 800; font-size: 1.4rem; letter-spacing: .05em;
+  text-decoration: none; border-radius: 6px;
+  box-shadow: 0 4px 0 #b8920a;
+  transition: transform .15s, box-shadow .15s, background .2s;
+  animation: pulso 2.2s ease-out infinite;
+}
+.btn-inscripcion::after { /* destello que cruza el botón */
+  content: ""; position: absolute; top: 0; left: -75%;
+  width: 50%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.65), transparent);
+  transform: skewX(-20deg);
+}
+.btn-inscripcion:hover, .btn-inscripcion:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 7px 0 #b8920a, 0 12px 20px rgba(0,0,0,.25);
+  animation: none;
+}
+.btn-inscripcion:hover::after, .btn-inscripcion:focus-visible::after {
+  left: 130%; transition: left .6s ease;
+}
+.btn-inscripcion:active { transform: translateY(3px); box-shadow: 0 1px 0 #b8920a; }
+
+.btn-inscripcion .flecha { display: inline-block; margin-left: .5rem; transition: transform .2s; }
+.btn-inscripcion:hover .flecha { transform: translateX(6px); }
+
+.btn-inscripcion .onda { /* efecto ripple al hacer clic */
+  position: absolute; border-radius: 50%; pointer-events: none;
+  background: rgba(21,24,29,.3); transform: scale(0);
+  animation: onda .6s ease-out forwards;
+}
+@keyframes onda { to { transform: scale(4); opacity: 0; } }
+@keyframes pulso {
+  0%   { box-shadow: 0 4px 0 #b8920a, 0 0 0 0 rgba(245,197,24,.7); }
+  70%  { box-shadow: 0 4px 0 #b8920a, 0 0 0 16px rgba(245,197,24,0); }
+  100% { box-shadow: 0 4px 0 #b8920a, 0 0 0 0 rgba(245,197,24,0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .btn-inscripcion { animation: none; }
+}
+
+/* ===== DISEÑO RESPONSIVE ===== */
+/* Tipografía y espacios fluidos */
+body { font-size: clamp(1rem, 0.95rem + 0.3vw, 1.15rem); }
+section h2 { font-size: clamp(1.5rem, 1.2rem + 1.5vw, 2.1rem); }
+header { padding: clamp(1.5rem, 5vw, 3rem) 1rem clamp(1.5rem, 4vw, 2.5rem); }
+header img, figure img { width: 100%; max-width: 600px; }
+
+/* Pantallas grandes */
+@media (min-width: 1200px) {
+  main, footer { width: min(100% - 4rem, 1200px); }
+  section { padding: 2rem 2.5rem; }
+}
+
+/* Tablet (hasta 900px) */
+@media (max-width: 900px) {
+  section { padding: 1.25rem 1.25rem; margin: 1.25rem 0; }
+  #nav-principal { padding: .35rem .6rem; }
+}
+
+/* Móvil (hasta 640px) */
+@media (max-width: 640px) {
+  main, footer { width: calc(100% - 1.25rem); }
+  section { border-left-width: 4px; padding: 1rem .9rem; }
+  section p { text-align: left; hyphens: auto; }
+
+  /* Menú: botones más fáciles de tocar */
+  #nav-principal a, #btn-tema { padding: .55rem .8rem; }
+
+  /* Categorías a lo ancho */
+  section[aria-labelledby="categorias"] ul { flex-direction: column; }
+  section[aria-labelledby="categorias"] li { text-align: center; }
+
+  /* Listas de marcas en una columna */
+  section[aria-labelledby="hypercars"] ol,
+  section[aria-labelledby="lmgt3"] ol { columns: 1; }
+
+  /* Tabla convertida en tarjetas */
+  .tabla-scroll { overflow-x: visible; }
+  table, tbody, tr, td { display: block; width: 100%; }
+  thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+  caption { display: block; }
+  tbody tr {
+    border: 1px solid var(--borde); border-left: 4px solid var(--azul);
+    border-radius: 6px; margin-bottom: .6rem; padding: .35rem .6rem;
+  }
+  tbody tr:nth-child(even) { background: var(--superficie); }
+  td { border: 0; padding: .2rem 0; display: grid; grid-template-columns: 6.5rem 1fr; gap: .5rem; }
+  td::before { content: attr(data-label); font-weight: 700; color: var(--texto-suave); }
+  tbody tr.seleccionada td::before { color: #15181d; }
+  #filtro { max-width: none; font-size: 1rem; } /* evita zoom automático en iOS */
+
+  /* Botón de inscripción a todo el ancho */
+  .btn-inscripcion { display: block; margin: 1rem 0 0; text-align: center; }
+  section[aria-labelledby="inscripcion"] p { font-size: 1.1rem; }
+
+  #btn-arriba { width: 2.8rem; height: 2.8rem; right: .8rem; bottom: .8rem; }
+}
+
+/* Móvil muy pequeño */
+@media (max-width: 360px) {
+  td { grid-template-columns: 1fr; gap: 0; }
+  header h1 { letter-spacing: 0; }
+}
+
+/* Dispositivos con muescas (iPhone) */
+@supports (padding: env(safe-area-inset-left)) {
+  main, footer { padding-inline: env(safe-area-inset-left) env(safe-area-inset-right); }
+}
